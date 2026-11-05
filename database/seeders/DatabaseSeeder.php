@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Student; // import model Student
+use App\Models\Student;
 use App\Models\Classroom;
 use App\Models\User;
+use App\Models\Subject;
+use App\Models\Teacher;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -30,5 +32,9 @@ class DatabaseSeeder extends Seeder
         Classroom::factory(10)
             ->hasStudents(10) // setiap classroom memiliki 10 students
             ->create();
+
+        // URUTAN INI WAJIB! Subject dulu, baru Teacher
+        Subject::factory(10)->create();
+        Teacher::factory(10)->create();
     }
 }

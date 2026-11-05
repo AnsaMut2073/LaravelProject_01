@@ -33,4 +33,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/student', [StudentController::class, 'index'])->name('student');
 
     Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom');
+
+    Route::get('/subject', [\App\Http\Controllers\SubjectController::class, 'index'])->name('subject');
+    
+    Route::get('/teacher', [\App\Http\Controllers\TeacherController::class, 'index'])->name('teacher');
 });
