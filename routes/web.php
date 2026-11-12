@@ -30,11 +30,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('about', [AboutController::class, 'index'])->name('about');
 
-    Route::get('/student', [StudentController::class, 'index'])->name('student');
+    // ==========================================
+    // BAGIAN STUDENT (Yang diperbaiki)
+    // ==========================================
+    // 1. Route buat nampilin halaman (GET)
+    Route::get('/student', [StudentController::class, 'index'])->name('student.index');
+
+    // 2. Route buat nyimpen data dari Form (POST) -> INI YANG BARU DITAMBAHIN
+    Route::post('/student', [StudentController::class, 'store'])->name('student.store');
+    // ==========================================
 
     Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom');
 
     Route::get('/subject', [\App\Http\Controllers\SubjectController::class, 'index'])->name('subject');
-    
+
     Route::get('/teacher', [\App\Http\Controllers\TeacherController::class, 'index'])->name('teacher');
 });

@@ -6,7 +6,7 @@
                 <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Students</h1>
                 <p class="text-sm text-gray-500 dark:text-gray-400">Kelola data siswa</p>
             </div>
-            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            <button type="button" data-modal-target="createStudentModal" data-modal-toggle="createStudentModal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                 + Tambah Siswa
             </button>
         </div>
@@ -68,4 +68,6 @@
             </div>
         </div>
     </div>
+
+    @include('admin.student.create', ['classrooms' => $classrooms])
 </x-admin.layout>
