@@ -9,6 +9,6 @@ class SubjectController extends Controller
     public function index()
     {
         $subjects = \App\Models\Subject::all();
-        return view('admin.subject', compact('subjects'));
+        return view('admin.subject.index', compact('subjects'));
     }
 }
