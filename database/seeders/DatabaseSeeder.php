@@ -33,8 +33,13 @@ class DatabaseSeeder extends Seeder
             ->hasStudents(10) // setiap classroom memiliki 10 students
             ->create();
 
-        // URUTAN INI WAJIB! Subject dulu, baru Teacher
-        Subject::factory(10)->create();
-        Teacher::factory(10)->create();
-    }
+        // Ganti dua baris ini:
+        // Subject::factory(10)->create();
+        // Teacher::factory(10)->create();
+
+        // Menjadi satu blok sakti ini:
+        Subject::factory(10)
+            ->hasTeacher() // Setiap 1 subject otomatis dibuatkan 1 teacher yang unik!
+            ->create();
+            }
 }

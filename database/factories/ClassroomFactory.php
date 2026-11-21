@@ -12,7 +12,6 @@ class ClassroomFactory extends Factory
 {
     public function definition(): array
     {
-        // 1. Bikin daftar kelas beserta jurusannya (berpasangan)
         $classes = [
             ['name' => '12 PPLG 1', 'major' => 'PPLG'],
             ['name' => '11 PPLG 1', 'major' => 'PPLG'],
@@ -28,7 +27,6 @@ class ClassroomFactory extends Factory
             ['name' => '10 Animasi 1', 'major' => 'Animasi'],
         ];
 
-        // 2. Ambil satu secara acak
-        return fake()->randomElement($classes);
+        return fake()->unique()->randomElement($classes);
     }
 }

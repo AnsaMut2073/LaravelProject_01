@@ -19,10 +19,8 @@ class TeacherFactory extends Factory
     public function definition(): array
     {
         return [
+            'nip' => fake()->unique()->numerify('##########'),
             'name' => fake()->name(),
-            // Perbaikan: Gunakan numerify untuk membuat 10 digit angka
-            'nip' => fake()->numerify('##########'),
-            'subject_id' => Subject::inRandomOrder()->first()->id ?? Subject::factory(),
             'start_date' => fake()->date(),
         ];
     }
