@@ -40,9 +40,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/student', [StudentController::class, 'store'])->name('student.store');
     // ==========================================
 
-    Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom');
+    Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom.index');
 
-    Route::get('/subject', [\App\Http\Controllers\SubjectController::class, 'index'])->name('subject');
+    Route::get('/subject', [SubjectController::class, 'index'])->name('subject.index');
 
-    Route::get('/teacher', [\App\Http\Controllers\TeacherController::class, 'index'])->name('teacher');
+    Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher.index');
 });
