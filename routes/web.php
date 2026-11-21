@@ -44,6 +44,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom.index');
 
+    Route::post('/classroom', [ClassroomController::class, 'store'])->name('classroom.store');
+
     Route::get('/subject', [SubjectController::class, 'index'])->name('subject.index');
 
     Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher.index');
