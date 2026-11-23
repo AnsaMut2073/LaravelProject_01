@@ -10,7 +10,7 @@ class Teacher extends Model
     /** @use HasFactory<\Database\Factories\TeacherFactory> */
     use HasFactory;
 
-    protected $fillable = ['name', 'nip', 'subject_id', 'start_date'];
+    protected $fillable = ['name', 'nip', 'subject_id'];
 
     // Sesuai slide: Teacher belongsTo Subject
     public function subject()

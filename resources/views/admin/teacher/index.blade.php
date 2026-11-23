@@ -1,29 +1,48 @@
 <x-admin.layout>
     <div class="p-4">
-        <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Data Teacher</h1>
+        {{-- 1. HEADER & TOMBOL TAMBAH --}}
+        <div class="flex items-center justify-between mb-4">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Data Teacher</h1>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Kelola data guru</p>
+            </div>
+            <button type="button" data-modal-target="createTeacherModal" data-modal-toggle="createTeacherModal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                + Tambah Guru
+            </button>
+        </div>
+
+        {{-- 2. CARD WRAPPER --}}
         <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th class="px-4 py-3">No</th>
-                        <th class="px-4 py-3">Nama Guru</th>
-                        <th class="px-4 py-3">NIP</th>
-                        <th class="px-4 py-3">Mata Pelajaran</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($teachers as $index => $item)
-                        <tr class="border-b dark:border-gray-700">
-                            <td class="px-4 py-3">{{ $index + 1 }}</td>
-                            <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">{{ $item->name }}</td>
-                            <td class="px-4 py-3">{{ $item->nip }}</td>
-                            <td class="px-4 py-3">{{ $item->subject->name ?? '-' }}</td> {{-- Nampilin nama mapel --}}
+            {{-- 3. TABEL --}}
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-4 py-3">No</th>
+                            <th scope="col" class="px-4 py-3">Nama Guru</th>
+                            <th scope="col" class="px-4 py-3">NIP</th>
+                            <th scope="col" class="px-4 py-3">Mata Pelajaran</th>
                         </tr>
-                    @empty
-                        <tr><td colspan="4" class="px-4 py-3 text-center">Data kosong.</td></tr>
-                    @endforelse
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @forelse ($teachers as $index => $item)
+                            <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td class="px-4 py-3">{{ $index + 1 }}</td>
+                                <td class="px-4 py-3 font-medium text-gray-900 dark:text-white">{{ $item->name }}</td>
+                                <td class="px-4 py-3">{{ $item->nip }}</td>
+                                <td class="px-4 py-3">{{ $item->subject->name ?? '-' }}</td> {{-- Nampilin nama mapel --}}
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="px-4 py-6 text-center">Data kosong.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
+    @include('admin.teacher.create', ['subjects' => $subjects])
+
 </x-admin.layout>

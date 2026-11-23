@@ -21,7 +21,7 @@ class TeacherFactory extends Factory
         return [
             'nip' => fake()->unique()->numerify('##########'),
             'name' => fake()->name(),
-            'start_date' => fake()->date(),
+            'subject_id' => Subject::factory(), // generate subject_id secara otomatis
         ];
     }
 }
