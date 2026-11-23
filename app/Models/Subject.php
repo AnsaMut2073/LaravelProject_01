@@ -10,6 +10,8 @@ class Subject extends Model
     /** @use HasFactory<\Database\Factories\SubjectFactory> */
     use HasFactory;
 
+    protected $table = 'subjects';
+
     protected $fillable = ['name'];
 
     // Sesuai slide: Subject hasOne Teacher
